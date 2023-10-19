@@ -1,6 +1,4 @@
 from player import Player
-from point import Point
-from game_board import VERTICAL, HORIZONTAL
 import ui
 
 class HumanPlayer(Player):
@@ -14,29 +12,27 @@ class HumanPlayer(Player):
                 print("Where would you like to place it?")
                 x = int(input("x: "))
                 y = int(input("y: "))
-                position = Point(x, y)
                 orientation = input("orientation (vertical/horizontal): ").lower()
                 if orientation == "vertical":
-                    orientation = VERTICAL
+                    orientation = board.VERTICAL
                 elif orientation == "horizontal":
-                    orientation = HORIZONTAL
-                
-                valid_input = board.place_ship(ship, position, orientation)
+                    orientation = board.HORIZONTAL
+                location = (x, y, orientation)
+                valid_input = board.place_ship(ship, *location)
                 if not valid_input:
                     print("I'm sorry, your ship cannot be placed there")
 
     # Asks a human player to attack
-    def attack(self, board) -> Point:
+    def attack(self, board):
         is_valid = False
-        position = None
         while not is_valid:
             print("Where would you like to attack?")
             x = int(input("x: "))
             y = int(input("y: "))
-            position = Point(x, y)
-            is_valid = board.validate_attack(position)
+            pos = (x, y)
+            is_valid = board.validate_attack(*pos)
             if not is_valid:
                 print("You cannot attack a location you've already attacked.")
         
-        return position
+        return pos
         

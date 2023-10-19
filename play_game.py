@@ -19,7 +19,7 @@ def play_game(p1, p2, size=GameBoard.DEFAULT_SIZE, shipset=GameBoard.DEFAULT_SHI
             # p1 attacks p2
             ui.display_attack_board(p1_board)
             attack_location = p1.attack(p1_board)
-            attack_result = p1_board.attack(p2_board, attack_location)
+            attack_result = p1_board.attack(p2_board, *attack_location)
         ui.display_result(attack_result)
         
         # Check if p1 won
@@ -33,7 +33,7 @@ def play_game(p1, p2, size=GameBoard.DEFAULT_SIZE, shipset=GameBoard.DEFAULT_SHI
             # p2 attacks p1
             ui.display_attack_board(p2_board)
             attack_location = p2.attack(p2_board)
-            attack_result = p2_board.attack(p1_board, attack_location)
+            attack_result = p2_board.attack(p1_board, *attack_location)
         ui.display_result(attack_result)
         
         # Check if p2 won

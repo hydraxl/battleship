@@ -1,6 +1,6 @@
 from game_board import GameBoard
 
-def test_strategy(place_ships, attack, size=GameBoard.DEFAULT_SIZE, shipset=GameBoard.__hash__DEFAULT_SHIPS) -> int:
+def test_strategy(place_ships, attack, size=GameBoard.DEFAULT_SIZE, shipset=GameBoard.DEFAULT_SHIPS) -> int:
     # Set up board using place_ships strategy
     board = GameBoard(size)
     place_ships(board, shipset)
@@ -17,7 +17,7 @@ def test_strategy(place_ships, attack, size=GameBoard.DEFAULT_SIZE, shipset=Game
         while attack_result == 2:
             # p1 attacks p2
             attack_location = attack(board)
-            attack_result = board.attack(board, attack_location)
+            attack_result = board.attack(board, *attack_location)
         
         # Check if p1 won
         if board.has_lost():
