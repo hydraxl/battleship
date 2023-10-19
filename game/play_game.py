@@ -1,5 +1,5 @@
-from game_board import GameBoard
-import ui
+from game.game_board import GameBoard
+import interface.text_ui as text_ui
 
 def play_game(p1, p2, size=GameBoard.DEFAULT_SIZE, shipset=GameBoard.DEFAULT_SHIPS):
     # Set up boards
@@ -17,10 +17,10 @@ def play_game(p1, p2, size=GameBoard.DEFAULT_SIZE, shipset=GameBoard.DEFAULT_SHI
         attack_result = 2
         while attack_result == 2:
             # p1 attacks p2
-            ui.display_attack_board(p1_board)
+            text_ui.display_attack_board(p1_board)
             attack_location = p1.attack(p1_board)
             attack_result = p1_board.attack(p2_board, *attack_location)
-        ui.display_result(attack_result)
+        text_ui.display_result(attack_result)
         
         # Check if p1 won
         if p2_board.has_lost():
@@ -31,10 +31,10 @@ def play_game(p1, p2, size=GameBoard.DEFAULT_SIZE, shipset=GameBoard.DEFAULT_SHI
         attack_result = 2
         while attack_result == 2:
             # p2 attacks p1
-            ui.display_attack_board(p2_board)
+            text_ui.display_attack_board(p2_board)
             attack_location = p2.attack(p2_board)
             attack_result = p2_board.attack(p1_board, *attack_location)
-        ui.display_result(attack_result)
+        text_ui.display_result(attack_result)
         
         # Check if p2 won
         if p1_board.has_lost():

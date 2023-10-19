@@ -1,4 +1,4 @@
-from game_board import GameBoard
+from game.game_board import GameBoard
 
 def test_strategy(place_ships, attack, size=GameBoard.DEFAULT_SIZE, shipset=GameBoard.DEFAULT_SHIPS) -> int:
     # Set up board using place_ships strategy

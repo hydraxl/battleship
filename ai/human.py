@@ -1,11 +1,11 @@
-from player import Player
-import ui
+from ai.player import Player
+import interface.text_ui as text_ui
 
-class HumanPlayer(Player):
+class Human(Player):
     # Asks a human player to place ships
     def place_ships(self, board, shipset):
         for ship in shipset:
-            ui.display_ship_board(board)
+            text_ui.display_ship_board(board)
             valid_input = False
             while not valid_input:
                 print(f"Your next ship is {ship} squares.")

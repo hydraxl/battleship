@@ -1,9 +1,9 @@
-from human_player import *
-from play_game import *
-from test_strategy import *
+from ai.human import *
+from game.play_game import *
+from game.test_strategy import *
 
-p1 = HumanPlayer()
-p2 = HumanPlayer()
+p1 = Human()
+p2 = Human()
 #play_game(p1, p2)
 
 result = test_strategy(p1.place_ships, p2.attack)
